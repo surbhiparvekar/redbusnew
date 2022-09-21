@@ -12,11 +12,14 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DashbordPage{
 
-	@FindBy(xpath = "//*[@data-id='1492']")
+	@FindBy(xpath = "(//*[@type='text'])[1]")
 	WebElement fromcity;
+	@FindBy(xpath = "//*[@data-id='1492']")
+	WebElement fromcity1;
 	
-	@FindBy(xpath = "//*[@data-id='130']")
+	@FindBy(xpath = "(//*[@type='text'])[2]")
 	WebElement tocity;
+	
 	
 	@FindBy(xpath = "(//*[@type='text'])[3]")
 	WebElement date;
@@ -24,7 +27,7 @@ public class DashbordPage{
 	@FindBy(xpath = "//*[@class='current day']")
 	WebElement currentday;
 	
-	@FindBy(xpath = "//*[@id='search_btn']")
+	@FindBy(xpath = "//*[text()='Search Buses']")
 	WebElement search;
 	
 	WebDriver driver;
@@ -39,9 +42,13 @@ public class DashbordPage{
 	{
 		Actions act = new Actions(driver);
 		fromcity.sendKeys("parbhani");
-		act.sendKeys(Keys.ENTER);
+		act.sendKeys(Keys.ENTER).perform();
+		fromcity1.click();
+		//act.sendKeys(Keys);
 		tocity.sendKeys("pune");
-		act.sendKeys(Keys.ENTER);
+		act.sendKeys(Keys.ENTER).perform();
+		tocity.click();
+		
 		date.click();
 		
 		currentday.click();
